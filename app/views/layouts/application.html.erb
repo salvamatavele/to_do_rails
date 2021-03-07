@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <%= csrf_meta_tags %>
+     <%= csp_meta_tag %> 
+     <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %> 
+     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <%=stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':'reload' %> 
+    <%= javascript_pack_tag 'application', 'materialize', 'app','data-turbolinks-track': 'reload' %>
+   
+  </head>
+
+  <body>
+      <header>
+        <%= render 'layouts/nav'%>
+      </header>
+      <main>
+        <%= yield%>
+      </main>
+  </body>
+</html>

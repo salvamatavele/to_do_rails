@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col s12 m8 l4 offset-m2 offset-l4">
+		<div class="card">
+
+			<div class="card-action teal lighten-1 white-text center">
+				<h6>Login</h6>
+			</div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="card-content">
+        <%= render "devise/shared/error_messages", resource: resource %> 
+				<div class="form-field">
+					<%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+				</div><br>
+
+				<div class="form-field">
+					<%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+				</div><br>
+        
+        <% if devise_mapping.rememberable? %>
+				<div class="form-field">
+          <p>
+            <label>
+              <%= f.check_box :remember_me %>
+              <span>remember_me</span>
+            </label>
+          </p>
+				</div><br>
+        <% end %>
+				<div class="form-field m8 ">
+          <%= f.submit "Log in", class: 'btn waves-effect' %>				
+        </div><br>
+        <%= render "devise/shared/links" %>
+			</div>
+      <% end %>
+		</div>
+	</div>
+</div>

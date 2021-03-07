@@ -1,0 +1,47 @@
+<div class="container">
+<p class=" green-text lighten-2" id="notice"><%= notice %></p>
+
+<h3>To_do List</h3>
+
+<table class="table table-divider table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Due</th>
+      <th>Done</th>
+      <th>user</th>
+      <th colspan="3">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+      <% if todo.user == current_user %>
+      <tr>
+        <td><%= todo.title %></td>
+        <td><%= todo.content %></td>
+        <td><%= todo.due %></td>
+        <td>
+          <% if todo.done == true %>
+            done 
+          <% else %>
+            panding
+          <% end %>
+        </td>
+        <td><%= todo.user.email %></td>
+        <td><%= link_to  todo, class: 'waves-effect waves-teal btn-flat' do%> <span class="material-icons"> visibility </span> <% end %></td>
+        <td><%= link_to  edit_todo_path(todo), class: 'waves-effect waves-teal btn-flat' do%><span class="material-icons grey-text"> edit </span> <% end %></td>
+        <td><%= link_to  todo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'waves-effect waves-teal btn-flat' do%><span class="material-icons red-text"> delete </span> <% end %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<div class="fixed-action-btn">
+  <%= link_to new_todo_path, class: 'btn-floating btn-large waves-effect blue accent-2' do %> <i class="large material-icons">add</i> <% end %>
+</div>
+      
+</div>

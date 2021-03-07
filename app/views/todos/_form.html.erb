@@ -1,0 +1,45 @@
+<%= form_with(model: todo) do |form| %>
+  <% if todo.errors.any? %>
+    <div id="error_explanation  red lighten-4">
+      <p class="red lighten-1"><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</p>
+
+      <ul>
+        <% todo.errors.each do |error| %>
+          <li class=" red-text lighten-1"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.number_field :user_id, id: :todo_user_id, class: 'validate', value: current_user.id, type: :hidden %>
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'validate' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :content %>
+    <%= form.text_area :content, class: 'materialize-textarea' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= form.label :due %>
+    <%= form.text_field :due, class: 'datepicker' %>
+    </div>
+  </div>
+  
+  <p>
+    <label>
+      <%= form.check_box :done %>
+      <span>Done</span>
+    </label>
+  </p><br>
+
+  <div class="actions right">
+    <%= form.submit class: 'btn waves-effect' %>
+  </div>
+<% end %>

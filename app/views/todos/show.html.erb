@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="green-text lighten-2" id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card white darken-2">
+        <div class="card-content black-text">
+          <span class="card-title"> <%= @todo.title %></span>
+          <p>  <%= @todo.content %></p>
+          <p><strong>Due:</strong><%= @todo.due %></p>
+          <p>
+            <strong>Status:</strong>
+            <% if @todo.done == true %>
+            done 
+          <% else %>
+            panding
+          <% end %>
+          </p>  
+        </div>
+        <div class="card-action">
+          <%= link_to 'Edit', edit_todo_path(@todo), class: 'btn waves-effect btn-primary'%> 
+          <%= link_to 'Back', todos_path, class: 'btn waves-effect black'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
